@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>青少年心理测试系统</title>
+</head>
+<body>
+	<h1>青少年心理测试系统</h1>
+	
+	<h2>注册中</h2>
+	<a href="/sys/login/"><h3>登录</h3></a>
+	<form action="/sys/do_regist/" method="post">
+        {% csrf_token %}
+		<label>用户名</label>
+		<input type="text" name="user" placeholder="Please put in want username"><br/>
+		<label>密码</label>
+		<input type="password" name="password" placeholder="Your want password"><br/>
+		<label>确认密码</label>
+		<input type="password" name="confirmPass" placeholder="enter password again"><br/>
+		<input type="submit" value="提交">
+		<input type="reset" value="重置">
+	</form>
+</body>
+</html>
