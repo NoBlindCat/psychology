@@ -1,7 +1,7 @@
 DATABASE = {
-    'database': 'psychology',
+    'database': 'psychology_test',
     'host': '127.0.0.1',
     'username': 'root',
-    'password': 'root',
+    'password': '123QWERTYUIOP',
     'port': 3306,
 }
