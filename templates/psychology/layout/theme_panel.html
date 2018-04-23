@@ -1,0 +1,53 @@
+<div class="theme-panel">
+    <a href="javascript:;" style="margin-top: 1px;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog fa_close"></i></a>
+    <div class="theme-panel-content">
+        <h5 class="m-t-0">Color Theme</h5>
+        <ul class="theme-list clearfix">
+            <li class="active"><a href="javascript:;" class="bg-black load_theme" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black" id="btn_gray">&nbsp;</a></li>
+            <li><a href="javascript:;" class="bg-blue load_theme" data-theme="blue" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
+        </ul>
+         <!--<div class="divider"></div>
+        <div class="row m-t-10">
+            <div class="col-md-5 control-label double-line">Sidebar Styling</div>
+            <div class="col-md-7">
+                <select name="sidebar-styling" class="form-control input-sm">
+                    <option value="1">default</option>
+                    <option value="2">grid</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-t-10">
+            <div class="col-md-5 control-label double-line">Sidebar Gradient</div>
+            <div class="col-md-7">
+                <select name="content-gradient" class="form-control input-sm">
+                    <option value="1">disabled</option>
+                    <option value="2">enabled</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-t-10">
+            <div class="col-md-12">
+                <a href="#" class="btn btn-inverse btn-block btn-sm" data-click="reset-local-storage"><i class="fa fa-refresh m-r-3"></i> Reset Local Storage</a>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+<script type="text/javascript">
+    // $(".load_theme").click(function(){
+    //     load_css()
+    // })
+    load_css();
+    function load_css(){
+        var css_file = $.cookie('theme');
+        if(css_file != '' && css_file != null && css_file != undefined){
+            var cssFileSrc = '/static/css/theme/' + css_file + '.css';
+            $("<link>").attr({ rel: "stylesheet",
+                type: "text/css",
+                href: cssFileSrc
+            }).appendTo("head");
+        }
+
+
+    }
+</script>

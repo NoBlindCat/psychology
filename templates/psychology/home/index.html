@@ -1,0 +1,25 @@
+{% extends 'psychology/layout/common.html' %}
+
+{% block html_title %}
+{#    {% trans 'CDN System' %}#}
+{% endblock %}
+
+{% block content %}
+    <div id="header-content">
+        <ul>
+            <li><a href="javascript:;"><h5>接入域名</h5><p><span>个</span></p></a></li>
+            <li><a href="/portal/flows"><h5>今日流量</h5><p><span>GB</span></p></a></li>
+            <li><a href="/portal/flows"><h5>峰值带宽</h5><p><span>Mbps</span></p></a></li>
+            <li><a href="/portal/access"><h5>请求数量</h5><p><span>万次</span></p></a></li>
+            <li><a href="/portal/flows"><h5>命中率</h5><p><span>%</span></p></a></li>
+        </ul>
+        <div id="index-traffic-map"></div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="/static/js/cdn-index-charts.js"></script>
+{% endblock javascript%}
+
+

@@ -1,22 +1,65 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>青少年心理测试系统</title>
-</head>
-<body>
-	<h1>青少年心理测试系统</h1>
-	
-	<h2>请登录</h2>
-	<a href="/sys/regist/"><h3>注册</h3></a>
-	<form action="/sys/do_login/" method="post">
-        {% csrf_token %}
-		<label>用户名</label>
-		<input type="text" name="user" placeholder="Please input your username" value={{ username }}>
-		<label>密码</label>
-		<input type="password" name="password" placeholder="Please input your password" value={{ password }}>
-		<input type="submit" value="登录">
-		<input type="reset"  value="重置">
-	</form>
-</body>
-</html>
+{% extends "psychology/layout/common.html" %}
+{% block html_title %}
+    青少年心理测试系统
+{% endblock html_title %}
+{% block base_html %}
+    <div id="page-loader" class="fade in"><span class="spinner"></span></div>
+    <!-- begin #page-container -->
+    <div id="page-container" class="fade">
+        <!-- begin login -->
+        <div class="login animated fadeInDown">
+            <div class="login-bg-logos">
+                <h4 style="font-size: 18px;">欢迎登录</h4>
+                <h3>青少年心理</h3>
+                <h3 style="margin-top: 0;">测试系统</h3>
+            </div>
+            <div class="login-content">
+                <h3 class="content-logos" style='margin-bottom:30px;color:#2288FF;font-family:SourceHanSansCN-Normal;'>LOG IN</h3>
+                <form class="margin-bottom-0" data-parsley-validate="true" action="/sys/do_login/" method="post">
+                  {% csrf_token %}
+                  <div class="form-group m-b-20" style="position: relative;">
+                    <input type="text" class="form-control input-lg" id="username" name="user" style="height:27px;border-radius:0;border:0;font-size:13px;border-bottom:1px solid #ccd0d4;padding:0;" placeholder="用户名" data-parsley-required="true" data-parsley-error-message='请输入用户名' />
+                    <div class="fa fa-user" style="position: absolute;right: 5px;top: 6px;font-size:13px;"></div>
+                  </div>
+                  <div class="form-group m-b-20" style="position: relative;margin-top: 30px;">
+                    <input id="password" name="password" type="password" class="form-control input-lg" placeholder="密码" data-parsley-required="true" data-parsley-error-message='请输入密码' style="height:27px;border-radius:0;border:0;font-size:13px;border-bottom:1px solid #ccd0d4;padding:0;" />
+                    <div class="fa fa-lock" style="position: absolute;right: 5px;top: 6px;font-size:14px;"></div>
+                  </div>
+                  <div class="login-buttons" style="text-align: -webkit-right;margin-top:34px;margin-bottom:10px;">
+                    <input class="btn btn-info btn-block" style="background: #2288FF;height: 30px;width: 100px;font-size: 12px;" type="submit" value="登陆" />
+                  </div>
+                </form>
+                <a href="/sys/regist/"><button class="btn btn-default btn-block" style="background: #2288FF;height: 30px;width: 100px;font-size: 12px">注册</button></a>
+            </div>
+        </div>
+        <!-- end login -->
+    </div>
+{% endblock base_html %}
+{% block javascript %}
+
+    <script type="text/javascript">
+        var hrefs = window.location.pathname;
+        if(hrefs.indexOf('login')>=0){
+          $('#page-container').css({
+            background: "url(/static/images/bg.png)"
+          })
+        }else{
+           $('#page-container').css({
+            background:'none'
+          })
+        }
+    </script>
+{% endblock javascript %}
+{#	<h1>青少年心理测试系统</h1>#}
+{##}
+{#	<h2>请登录</h2>#}
+{#	<a href="/sys/regist/"><h3>注册</h3></a>#}
+{#	<form action="/sys/do_login/" method="post">#}
+{#        {% csrf_token %}#}
+{#		<label>用户名</label>#}
+{#		<input type="text" name="user" placeholder="Please input your username" value={{ username }}>#}
+{#		<label>密码</label>#}
+{#		<input type="password" name="password" placeholder="Please input your password" value={{ password }}>#}
+{#		<input type="submit" value="登录">#}
+{#		<input type="reset"  value="重置">#}
+{#	</form>#}

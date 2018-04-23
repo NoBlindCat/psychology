@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+    div{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+
+        -webkit-box-pack: center;
+        -moz-box-pack: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+</style>
 <head>
 <meta charset="UTF-8">
 <title>青少年心理测试系统</title>
 </head>
 <body>
 	<h1>青少年心理测试系统</h1>
-	
 	<h2>请填写下列测试题目</h2>
 	<a href="/sys/regist/"><h3>注销</h3></a>
 	<form action="/sys/get_result/" method="post" id="f1" target="_blank">

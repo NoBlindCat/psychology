@@ -13,20 +13,20 @@ def login(request):
 
 
 def do_login(request):
-    if request.method == "GET":
-        return render(request, 'psychology/home/login.html')
-    if request.method == "POST":
-        username = request.POST.get('user')
-        password = request.POST.get('password')
-        user = User.objects.filter(name=username).first()
-        if user:
-            print(user.password, password)
-            if user.password == password:
-                return redirect('/sys/a/')
-            messages.warning(request, u'密码错误,请输入正确的密码')
-            return redirect('/sys/login/')
-        messages.warning(request, u'帐号不存在!')
+    param = request.POST
+    username = param.get('user')
+    password = param.get('password')
+    user = User.objects.filter(name=username).first()
+    print(username, password)
+    if user:
+        print(user.password, password)
+        if user.password == password:
+            request.session['user_id'] = user.id
+            request.session['username'] = user.name
+            return render(request, 'psychology/a.html')
+        messages.warning(request, u'密码错误,请输入正确的密码')
         return redirect('/sys/login/')
+    messages.warning(request, u'帐号不存在!')
     return redirect('/sys/login/')
 
 

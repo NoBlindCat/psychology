@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block html_title %}
+            Archon Admin
+        {% endblock html_title %}
+    </title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    {% include "psychology/layout/css.html" %}
+
+    {% block html_css %}
+
+    {% endblock html_css %}
+</head>
+<body>
+    {% block base_html %}
+
+        <!-- begin #page-loader -->
+        <!--<div id="page-loader" class="fade in"><span class="spinner"></span></div>-->
+        <!-- end #page-loader -->
+        <div id="page-container" class="page-sidebar-fixed">
+            <div id = "page-loader" class = "fade" style="background: rgba(0,0,0,.5);">
+                <span class = "spinner" > </span>
+            </div>
+            <div class="page-wrapper" style="min-width: 1024px;">
+                <div class="row" style="position: relative;">
+                    <div class="alert fade" id="error_message_alert">
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="line-height:0.8"><span aria-hidden="true">&times;</span></button> -->
+                        <p style="font-size: 14px;" id="error_message"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="content-right">
+                <div id="header-navbar" style="height:56px;background:#fff;margin-top:0;font-size:16px;width:100%;line-height:56px;margin-bottom:0;box-shadow: 0 0 15px #b5b5b5;position:fixed;z-index:999;">
+                    <i class="fa fa-outdent"></i>
+                    <!-- <span>概览</span> -->
+                    <span class="nav-profile">
+                        <span class="header_username" style="padding: 0 20px;">{{ request.user.contact }}<i class="fa fa-sort-desc" style="vertical-align:top;margin-top:17px;margin-left:20px;"></i></span>
+                        <ul>
+                            <li>
+                                <a href="{% url 'logout' %}" style="text-decoration: none;display:block;padding-left: 20px;">登出</a>
+                            </li>
+                        </ul>
+                    </span>
+                    <span style="float: right;">欢迎</span>
+                </div>
+                <div class="clearfix"></div>
+                <script src="/static/plugins/jquery/jquery-1.9.1.min.js"></script>
+                <script src="/static/js/highcharts.js"></script>
+                <script src="/static/js/echarts.js"></script>
+                <script src="/static/js/bootstrap-datetimepicker.min.js"></script>
+                <script src="/static/js/bootstrap-datetimepicker.zh-CN.js"></script>
+                <script src="/static/js/moment.js"></script>
+                {% block content %}
+
+                {% endblock content %}
+            </div>
+
+            <!-- begin scroll to top btn -->
+            <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+            <!-- end scroll to top btn -->
+        </div>
+        <!-- end page container -->
+
+
+    {% endblock base_html %}
+
+    {% include "psychology/layout/js.html" %}
+
+    <!-- begin chage_password -->
+    {% include "psychology/user/change_password.html" %}
+    <!-- end chage_password -->
+
+    <!-- begin theme -->
+    {% include "psychology/layout/theme_panel.html" %}
+    <!-- end theme -->
+
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+    {% block javascript %}
+
+    {% endblock javascript %}
+
+</body>
+</html>

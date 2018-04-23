@@ -1,0 +1,104 @@
+<div id="sidebar" class="sidebar">
+    <div data-scrollbar="true" data-height="100%">
+        <ul class="nav">
+            <li class="spc-logo">
+                <img src="/static/images/sclogo.png" width="120px" height="30px">
+            </li>
+        </ul>
+        <!-- <ul class="nav">
+            <li class="nav-profile">
+                <div class="info">
+                    {% trans "Welcome" %} {{ request.user.contact }}
+                    <span class="pull-right label label-success" style="margin-top:2px;cursor:pointer;line-height:1.2;">
+                        <a style="text-decoration: none; color: #FFFFFF" href="{% url 'logout' %}">{% trans "Log Out"%}</a>
+                    </span>
+                </div>
+            </li>
+        </ul> -->
+         <ul class="nav">
+            <li class="has-sub {% headnav_open request 'home' %}">
+                <a href="{% url "home_index" %}">
+                    <!-- <b class="caret pull-right"></b> -->
+                    <i class="fa fa-desktop"></i>
+                    <span>{% trans "概览"%}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav">
+            <li class="has-sub {% headnav_open request 'channel' %}">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-cloud"></i>
+                    <span>{% trans "Channel Management"%}</span>
+                </a>
+                <ul class="sub-menu">
+{#                    <li class="{% sidenav_active request 'channel_index' %}"><a href="{% url 'channel_index' %}">{% trans "Channel"%}</a></li>#}
+                    <li class="{% sidenav_active request 'content_refresh' %}"><a href="{% url 'content_refresh' %}">{% trans "Content Refresh"%}</a></li>
+{#                    <li class="{% sidenav_active request 'preload_index' %}"><a href="{% url 'preload_index' %}">{% trans "Content Reload"%}</a></li>#}
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav">
+            <li class="has-sub {% headnav_open request 'statistical' %}">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-cloud"></i>
+                    <span>{% trans "统计分析"%}</span>
+                </a>
+                <ul class="sub-menu" id="statisul">
+                    <li class="{% sidenav_active request 'flows_index' %}"><a href="{% url 'flows' %}">{% trans "流量"%}</a></li>
+                    <li class="{% sidenav_active request 'areas_index' %}"><a href="{% url 'areas' %}">{% trans "区域"%}</a></li>
+                    <li class="{% sidenav_active request 'sources_index' %}"><a href="{% url 'sources' %}">{% trans "来源"%}</a></li>
+                    <li class="{% sidenav_active request 'ua_index' %}"><a href="{% url 'ua' %}">{% trans "UA"%}</a></li>
+                    <li class="{% sidenav_active request 'status_code_index' %}"><a href="{% url 'status_code' %}">{% trans "状态码"%}</a></li>
+                    <li class="{% sidenav_active request 'access_index' %}"><a href="{% url 'access' %}">{% trans "PV/UV"%}</a></li>
+                    <li class="{% sidenav_active request 'top_url_index' %}"><a href="{% url 'top_url' %}">{% trans "Top 50"%}</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav">
+            <li class="has-sub {% headnav_open request 'log' %}">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-cloud"></i>
+                    <span>{% trans "日志管理"%}</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{% sidenav_active request 'log_index' %}"><a href="{% url 'log_download' %}">{% trans "日志下载"%}</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav">
+            <li class="has-sub {% headnav_open request 'operation_log' %}">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-list-alt"></i>
+                    <span>{% trans "Operation Log"%}</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{% sidenav_active request 'operation_log' %}"><a href="{% url 'operation_log' %}">{% trans "Operation Log"%}</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="nav">
+            <li class="has-sub {% headnav_open request 'user' %}">
+                <a href="javascript:;">
+                    <b class="caret pull-right"></b>
+                    <i class="fa fa-group"></i>
+                    <span>{% trans "User Management"%}</span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="{% sidenav_active request 'user_index' %}"><a href="{% url 'user_index' %}">{% trans "Personal Info"%}</a></li>
+                    <li class="{% sidenav_active request 'change_password' %}">
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#portal_change_password">{% trans "Change Password"%}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="sidebar-bg"></div>
