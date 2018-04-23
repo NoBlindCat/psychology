@@ -4,7 +4,7 @@ from django.contrib import messages
 
 from sysadmin import models
 from sysadmin.controllers.classify import classify
-from sysadmin.models import User
+from sysadmin.models import User, PsychologicalFile
 from sysadmin.controllers import my_tree
 
 
@@ -38,7 +38,7 @@ def do_regist(request):
     if request.method == "POST":
         username = request.POST['user']
         us = User.objects.filter(name=username).count()
-        if us < 1 :
+        if us < 1:
             password = request.POST['password']
             user = User(name=username, password=password)
             user.save()
@@ -65,8 +65,6 @@ def get_result(request):
         sum = 0
         for question_num in range(1, labels_size[i]+1):
             sum += int(str(request.POST['{label}_{num}'.format(label=labels[i], num=str(question_num))]))
-        print(sum)
-        print(labels_size[i])
         if labels_size[i]*3 < sum <= labels_size[i]*4:
             labels_level.append('severe')
         elif labels_size[i]*2 < sum <= labels_size[i]*3:
@@ -75,11 +73,10 @@ def get_result(request):
             labels_level.append('mild')
         elif 0 <= sum <= labels_size[i]:
             labels_level.append('health')
-    print(len(labels_level))
-    print(len(labels))
     class_level = get_c_level(labels_level, labels)
     context = {'A': "心理状况非常健康，请保持良好心态！", 'B': "心里稍微有点不平衡呢～，调整下心态吧",
                'C': "同学，情况有点不太对啊，和老师沟通一下吧！", 'D': "emmmmm.....,让你老师过来一下"}
+    psy_file = PsychologicalFile()
     return render(request, 'psychology/result.html', {'class_level': class_level, 'context': context[class_level]})
 
 
