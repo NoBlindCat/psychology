@@ -3,9 +3,11 @@ README
 启动下载方式
 ----------
 命令 <br>
-        python main --vendor
-可查看可供选择的厂商, <br>
-随后 python main --vendor （厂商） 可下载相关厂商的日志
+                python main --vendor
+<br>可查看可供选择的厂商, <br>
+随后<br> 
+                python main --vendor （厂商） 
+<br>可下载相关厂商的日志
 
 厂商
 ---------
